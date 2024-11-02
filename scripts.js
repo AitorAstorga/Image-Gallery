@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Fetching directory listing...");
 
-    fetch("/images/")
+    fetch("images/")
         .then(response => {
             console.log("Response received:", response);
             return response.text();
@@ -33,9 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (fileName.match(/\.(jpg|jpeg|png|gif)(\.preview)?$/i)) {
                     console.log("Adding image file to gallery:", fileName);
 
-                    // If fileName does not already start with /images/, prepend it
-                    if (!fileName.startsWith("/images/")) {
-                        fileName = `/images/${fileName}`;
+                    if (!fileName.startsWith("images/")) {
+                        fileName = `${fileName}`;
                     }
 
                     // Create an image element and set its source
