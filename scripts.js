@@ -1,52 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
     const galleryElement = document.getElementById("gallery");
 
-    console.log("Fetching directory listing...");
+    console.log("Fetching image list...");
 
-    fetch("images/")
+    fetch("images.json")
         .then(response => {
-            console.log("Response received:", response);
-            return response.text();
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
         })
         .then(data => {
-            console.log("Directory listing data:", data);
+            console.log("Image list received:", data);
 
-            // Parse the response as HTML
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(data, "text/html");
+            // Clear the gallery before adding images
+            galleryElement.innerHTML = '';
 
-            // Check if parsing worked
-            console.log("Parsed HTML Document:", htmlDoc);
-
-            // Select all links within the directory listing
-            const fileLinks = htmlDoc.querySelectorAll("a");
-
-            // Log the found links
-            console.log("File links found:", fileLinks);
-
-            // Clear the gallery and add images
-            fileLinks.forEach(link => {
-                let fileName = link.getAttribute("href");
+            // Iterate over the image filenames
+            data.forEach(fileName => {
                 console.log("Processing file:", fileName);
 
-                // Only include files that end with image extensions (including those with .preview)
-                if (fileName.match(/\.(jpg|jpeg|png|gif)(\.preview)?$/i)) {
-                    console.log("Adding image file to gallery:", fileName);
+                // Create an image element and set its source
+                const imgElement = document.createElement("img");
+                imgElement.src = `images/${fileName}`;
+                imgElement.alt = fileName;
+                imgElement.classList.add("gallery-image"); // Add a class for styling if needed
 
-                    if (!fileName.startsWith("images/")) {
-                        fileName = `${fileName}`;
-                    }
-
-                    // Create an image element and set its source
-                    const imgElement = document.createElement("img");
-                    imgElement.src = fileName;
-                    imgElement.alt = fileName;
-
-                    // Append the image to the gallery
-                    galleryElement.appendChild(imgElement);
-                } else {
-                    console.log("Skipping non-image file:", fileName);
-                }
+                // Append the image to the gallery
+                galleryElement.appendChild(imgElement);
             });
         })
         .catch(error => console.error("Error loading images:", error));
