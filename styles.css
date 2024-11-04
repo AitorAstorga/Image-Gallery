@@ -1,3 +1,4 @@
+/* Dark Theme Background */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,10 +6,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(150deg, rgb(24, 24, 27) 0%, rgb(100, 9, 77) 35%, rgb(195, 35, 184) 100%);
+    color: #fff;
 }
 
 h1 {
     text-align: center;
+    color: #fff;
 }
 
 .gallery {
@@ -24,11 +28,193 @@ h1 {
     height: auto;
     object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     transition: transform 0.2s;
+    cursor: pointer;
+    loading: lazy; /* Lazy Loading */
 }
 
 .gallery img:hover {
     transform: scale(1.05);
 }
- 
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1000; 
+    padding-top: 60px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden; 
+    background-color: rgba(0, 0, 0, 0.9); 
+}
+
+.modal-header {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 80%;
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden; /* Hide excess parts when zoomed */
+    cursor: zoom-in; /* Initial cursor */
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 80vh;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    object-fit: contain; /* Maintain aspect ratio */
+    opacity: 0;
+    transform: scale(1); /* Initial scale */
+    transform-origin: center center; /* Initial origin */
+    cursor: inherit; /* Inherit cursor from .image-container */
+}
+
+.modal-image.loaded {
+    opacity: 1;
+}
+
+.modal-image.zoomed {
+    cursor: grab; /* Change cursor when zoomed */
+    transition: transform 0.3s ease, opacity 0.3s ease, cursor 0.3s ease;
+}
+
+.modal-image.zoomed.grabbing {
+    cursor: grabbing; /* Change cursor when actively dragging */
+}
+
+.close {
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+    border: none;
+    background: none;
+    user-select: none;
+    transition: color 0.3s;
+}
+
+.prev:hover, .next:hover {
+    color: #bbb;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.modal-controls button {
+    background-color: #f00dd7;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.modal-controls button:hover {
+    background-color: #fff;
+    color: #C323B8;
+}
+
+.modal-caption {
+    text-align: center;
+    color: #ccc;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Additional Dark Theme Enhancements */
+button {
+    font-size: 16px;
+    outline: none;
+    border-radius: 4px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Style for the Download Icon */
+/* Style for the Download Icon */
+.download-icon {
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.download-icon:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+    }
+
+    .prev, .next {
+        font-size: 24px;
+        padding: 12px;
+    }
+
+    .modal-controls button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .modal-caption {
+        font-size: 16px;
+    }
+}
+
+/* Grabbing Cursor during active drag */
+.modal-image.grabbing {
+    cursor: grabbing;
+}
