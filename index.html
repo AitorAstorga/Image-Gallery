@@ -9,30 +9,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>¡Hola, soy Blue!</h1>
-    <p style="width: 63%;">Nací el 5 de agosto de 2022. Mi origen es un misterio, pero fui rescatado de un pequeño pueblo antes de encontrar un hogar con <a href="https://github.com/AitorAstorga">Aitor Astorga</a>. En esta galería, tienes el honor de admirar mi espléndida y adorable presencia. ¡Espero que disfrutes de mi fotogénico encanto tanto como yo disfruto posar para la cámara!</p>
+    <!-- Card Container -->
+    <div class="card">
+        <h1>¡Hola, soy Blue!</h1>
+        <p>Nací el 5 de agosto de 2022. Mi origen es un misterio, pero fui rescatado de un pequeño pueblo antes de encontrar un hogar con <a href="https://github.com/AitorAstorga">Aitor Astorga</a>. En esta galería, tienes el honor de admirar mi espléndida y adorable presencia. ¡Espero que disfrutes de mi fotogénico encanto tanto como yo disfruto posar para la cámara!</p>
+        
+        <div class="gallery" id="gallery"></div>
     
-    <div class="gallery" id="gallery"></div>
-
-    <!-- Modal Structure -->
-    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
-        <div class="modal-header">
-            <div class="modal-controls">
-                <a id="downloadBtn" href="#" download aria-label="Download Image">
-                    <img src="resources/circle-down-sharp-solid.svg" alt="Download Icon" class="download-icon">
-                </a>
+        <!-- Modal Structure -->
+        <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <div class="modal-controls">
+                    <a id="downloadBtn" href="#" download aria-label="Download Image">
+                        <img src="resources/circle-down-sharp-solid.svg" alt="Download Icon" class="download-icon">
+                    </a>
+                </div>
+                <span class="close" aria-label="Close">&times;</span>
             </div>
-            <span class="close" aria-label="Close">&times;</span>
-        </div>
-        <div class="modal-content">
-            <button class="prev" aria-label="Previous Image">&#10094;</button>
-            <div class="image-container">
-                <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="modal-content">
+                <button class="prev" aria-label="Previous Image">&#10094;</button>
+                <div class="image-container">
+                    <img class="modal-image" id="modalImage" src="" alt="">
+                </div>
+                <button class="next" aria-label="Next Image">&#10095;</button>
             </div>
-            <button class="next" aria-label="Next Image">&#10095;</button>
+            <div class="modal-caption" id="modalCaption"></div>
         </div>
-        <div class="modal-caption" id="modalCaption"></div>
     </div>
+
+    <!-- Static Footer -->
+    <footer class="footer">
+        <a href="https://github.com/AitorAstorga/Image-Gallery" aria-label="GitHub Repository" class="github">
+            <p class="github-label">GitHub</p>
+            <img src="resources/github-logo.svg" alt="GitHub Logo" class="github-logo">
+        </a>
+    </footer>
 
     <script src="scripts.js"></script>
 </body>

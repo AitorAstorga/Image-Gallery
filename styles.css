@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
 /* Dark Theme Background */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Comfortaa", sans-serif;
     margin: 0;
     padding: 20px;
     display: flex;
@@ -8,11 +10,32 @@ body {
     align-items: center;
     background: linear-gradient(150deg, rgb(24, 24, 27) 0%, rgb(100, 9, 77) 35%, rgb(195, 35, 184) 100%);
     color: #fff;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 60px; /* Space for the footer */
 }
 
 h1 {
     text-align: center;
     color: #fff;
+}
+
+p {
+    color: white;
+}
+
+a {
+    color: #C323B8;
+    text-decoration: none;
+}
+
+.card {
+    background-color: #18181b; /* Dark card background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 1200px;
 }
 
 .gallery {
@@ -176,11 +199,11 @@ button {
     border-radius: 4px;
 }
 
-a {
-    text-decoration: none;
+#downloadBtn {
+    outline: none;
+    box-shadow: none;
 }
 
-/* Style for the Download Icon */
 /* Style for the Download Icon */
 .download-icon {
     width: 24px; /* Adjust size as needed */
@@ -218,3 +241,36 @@ a {
 .modal-image.grabbing {
     cursor: grabbing;
 }
+
+/* Footer Styles */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #64094d; /* Footer background color */
+    text-align: right;
+}
+
+.github {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 10px;
+}
+
+.github-label {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.github-logo {
+    width: 20px; /* Adjust size as needed */
+    height: 20px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    transition: transform 0.2s;
+}
+
+.github-logo:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
