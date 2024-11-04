@@ -8,8 +8,11 @@ RUN apt-get update && \
     apt-get install -y inotify-tools && \
     rm -rf /var/lib/apt/lists/*
 
-# Remove the directory
+# Remove the existing html directory
 RUN rm -rf /usr/share/nginx/html
+
+# Set the working directory
+WORKDIR /usr/share/nginx/html
 
 # Copy the repository to the directory
 COPY . /usr/share/nginx/html
