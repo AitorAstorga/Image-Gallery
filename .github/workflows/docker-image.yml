@@ -21,10 +21,10 @@ jobs:
 
     # Build the Docker image
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag aichan-image-gallery:latest --tag ghcr.io/aitorastorga/aichan-image-gallery:latest
+      run: docker build . --file Dockerfile --tag aichan-belce:latest --tag ghcr.io/aitorastorga/aichan-belce:latest
 
     # Push the Docker image to GHCR
     - name: Push Docker images to GHCR
       run: |
         # Push the main app image
-        docker push ghcr.io/aitorastorga/aichan-image-gallery:latest
+        docker push ghcr.io/aitorastorga/aichan-belce:latest
