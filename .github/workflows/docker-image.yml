@@ -1,5 +1,4 @@
 name: Docker Image CI
-
 on:
   push:
     branches: [ "belce" ]
@@ -7,6 +6,7 @@ on:
     branches: [ "belce" ]
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
@@ -18,24 +18,12 @@ jobs:
     - name: Log in to the Container registry
       run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    # Set up variables
-    - name: Set up variables
-      run: echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
-
     # Build the Docker image
     - name: Build the Docker image
-      run: |
-        docker build . --file Dockerfile --tag aichan-belce:${{ env.BRANCH_NAME }} --tag ghcr.io/aitorastorga/aichan-belce:${{ env.BRANCH_NAME }}
-        # If the branch is main, also tag as latest
-        if [ "${{ env.BRANCH_NAME }}" == "main" ]; then
-          docker tag aichan-belce:main ghcr.io/aitorastorga/aichan-belce:latest
-        fi
+      run: docker build . --file Dockerfile --tag aichan-belce:latest --tag ghcr.io/aitorastorga/aichan-belce:latest
 
-    # Push the Docker images to GHCR
+    # Push the Docker image to GHCR
     - name: Push Docker images to GHCR
       run: |
-        docker push ghcr.io/aitorastorga/aichan-belce:${{ env.BRANCH_NAME }}
-        # If the branch is main, also push the latest tag
-        if [ "${{ env.BRANCH_NAME }}" == "main" ]; then
-          docker push ghcr.io/aitorastorga/aichan-belce:latest
-        fi
+        # Push the main app image
+        docker push ghcr.io/aitorastorga/aichan-belce:latest
