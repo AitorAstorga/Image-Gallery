@@ -13,7 +13,7 @@
     <img src="src/assets/rngLogo.png" alt="Logo" width="160" height="160">
   </a>
 
-  <h1 align="center">[ARCHIVE] Image Gallery</h1>
+  <h1 align="center">[ARCHIVED] Image Gallery</h1>
 
   <p align="center">
     Simple HTML / CSS / JS image gallery made for my cat and deployed with Docker.
