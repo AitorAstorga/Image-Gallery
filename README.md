@@ -13,7 +13,7 @@
     <img src="src/assets/rngLogo.png" alt="Logo" width="160" height="160">
   </a>
 
-  <h1 align="center">Image Gallery</h1>
+  <h1 align="center">[ARCHIVE] Image Gallery</h1>
 
   <p align="center">
     Simple HTML / CSS / JS image gallery made for my cat and deployed with Docker.
@@ -62,6 +62,8 @@
   </ol>
 </details>
 
+> [!WARNING]
+> This project is now migrated to https://github.com/AitorAstorga/image_gallery as part of my new efforts to erase JavaScript from the Earth. Glory to [WebAssembly](https://webassembly.org/) compiled by the grace of the all-powerful [Rust](https://www.rust-lang.org)!
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
